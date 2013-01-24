@@ -1,0 +1,33 @@
+[ui]
+<%- if node[:mercurial_env][:hgrc][:username] %>
+username = <%= node[:mercurial_env][:hgrc][:username] %>
+<%- end -%>
+
+[extensions]
+graphlog =
+record =
+mq =
+<%-
+  owner = node[:mercurial_env][:owner]
+  hgext_dir = node[:mercurial_env][:hgext_dir]
+  unless hgext_dir
+    if owner == 'root'
+      hgext_dir = "/root/.hgext"
+    else
+      hgext_dir = "/home/#{owner}/.hgext"
+    end
+  end
+-%>
+histedit = <%= node[:mercurial_env][:hgext_dir] %>/hg_histedit.py
+shelve = <%= node[:mercurial_env][:hgext_dir] %>/hgshelve.py
+bb = <%= node[:mercurial_env][:hgext_dir] %>/hgbb.py
+
+[hostfingerprints]
+<%- node[:mercurial_env][:hgrc][:hostfingerprints].each_pair do |k,v| -%>
+<%= k %> = <%= v %>
+<%- end -%>
+
+[bb]
+<%- node[:mercurial_env][:hgrc][:bb].each_pair do |k,v| -%>
+<%= k %> = <%= v %>
+<%- end -%>
