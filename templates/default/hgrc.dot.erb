@@ -18,9 +18,9 @@ mq =
     end
   end
 -%>
-histedit = <%= node[:mercurial_env][:hgext_dir] %>/hg_histedit.py
-shelve = <%= node[:mercurial_env][:hgext_dir] %>/hgshelve.py
-bb = <%= node[:mercurial_env][:hgext_dir] %>/hgbb.py
+histedit = <%= hgext_dir %>/hg_histedit.py
+shelve = <%= hgext_dir %>/hgshelve.py
+bb = <%= hgext_dir %>/hgbb.py
 
 [hostfingerprints]
 <%- node[:mercurial_env][:hgrc][:hostfingerprints].each_pair do |k,v| -%>
