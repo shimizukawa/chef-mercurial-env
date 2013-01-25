@@ -1,7 +1,7 @@
-# Cookbook Name:: redmine
-# Attributes:: redmine
+# Cookbook Name:: mercurial-env
+# Attributes:: default
 #
-# Copyright 2009, Opscode, Inc
+# Copyright 2013, Takayuki SHIMIZUKAWA
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -18,6 +18,7 @@
 default[:mercurial_env][:owner] = 'root'
 default[:mercurial_env][:hgext_dir] = nil
 
+default[:mercurial_env][:hgrc][:path] = nil
 default[:mercurial_env][:hgrc][:owner] = nil
 default[:mercurial_env][:hgrc][:username] = nil
 default[:mercurial_env][:hgrc][:hostfingerprints] = {
@@ -28,3 +29,16 @@ default[:mercurial_env][:hgrc][:bb] = {
   'password' => '',
   'default_method' => 'https',
 }
+
+# setup dynamic attribute
+unless node[:mercurial_env][:hgrc][:owner]
+  override[:mercurial_env][:hgrc][:owner] = node[:mercurial_env][:owner]
+end
+unless node[:mercurial_env][:hgrc][:path]
+  if node[:mercurial_env][:hgrc][:owner] == 'root'
+    path = "/root/.hgrc"
+  else
+    path = "/home/#{node[:mercurial_env][:hgrc][:owner]}/.hgrc"
+  end
+  override[:mercurial_env][:hgrc][:path] = path
+end

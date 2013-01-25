@@ -31,26 +31,7 @@ mercurial_ext 'https://bitbucket.org/birkenfeld/hgbb/raw/tip/hgbb.py' do
   owner node.mercurial_env.owner
 end
 
-template "/home/#{node.mercurial_env.owner}/.hgrc" do
-  source 'hgrc.dot.erb'
-  user node.mercurial_env.owner
-  only_if {node.mercurial_env.hgrc.owner.nil? && node.mercurial_env.owner != 'root'}
-end
-
-template "/home/#{node.mercurial_env.hgrc.owner}/.hgrc" do
+template node.mercurial_env.hgrc.path do
   source 'hgrc.dot.erb'
   user node.mercurial_env.hgrc.owner
-  only_if {!node.mercurial_env.hgrc.owner.nil? && node.mercurial_env.hgrc.owner != 'root'}
-end
-
-template '/root/.hgrc' do
-  source 'hgrc.dot.erb'
-  user node.mercurial_env.owner
-  only_if {node.mercurial_env.hgrc.owner.nil? && node.mercurial_env.owner == 'root'}
-end
-
-template '/root/.hgrc' do
-  source 'hgrc.dot.erb'
-  user node.mercurial_env.hgrc.owner
-  only_if {!node.mercurial_env.hgrc.owner.nil? && node.mercurial_env.hgrc.owner == 'root'}
 end
