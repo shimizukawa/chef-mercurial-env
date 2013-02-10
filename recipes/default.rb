@@ -18,7 +18,7 @@
 #
 require_recipe "mercurial"
 
-mercurial_ext 'https://bitbucket.org/tksoh/hgshelve/raw/tip/hgshelve.py' do
+mercurial_ext 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py' do
   hgext_dir node.mercurial_env.hgext_dir
   owner node.mercurial_env.owner
 end
