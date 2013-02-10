@@ -16,10 +16,12 @@
 # limitations under the License.
 
 default[:mercurial_env][:owner] = 'root'
+default[:mercurial_env][:group] = 'root'
 default[:mercurial_env][:hgext_dir] = nil
 
 default[:mercurial_env][:hgrc][:path] = nil
 default[:mercurial_env][:hgrc][:owner] = nil
+default[:mercurial_env][:hgrc][:group] = nil
 default[:mercurial_env][:hgrc][:username] = nil
 default[:mercurial_env][:hgrc][:hostfingerprints] = {
   'bitbucket.org' => '24:9c:45:8b:9c:aa:ba:55:4e:01:6d:58:ff:e4:28:7d:2a:14:ae:3b',
@@ -33,6 +35,9 @@ default[:mercurial_env][:hgrc][:bb] = {
 # setup dynamic attribute
 unless node[:mercurial_env][:hgrc][:owner]
   override[:mercurial_env][:hgrc][:owner] = node[:mercurial_env][:owner]
+end
+unless node[:mercurial_env][:hgrc][:group]
+  override[:mercurial_env][:hgrc][:group] = node[:mercurial_env][:group]
 end
 unless node[:mercurial_env][:hgrc][:path]
   if node[:mercurial_env][:hgrc][:owner] == 'root'

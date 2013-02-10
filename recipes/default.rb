@@ -21,6 +21,7 @@ require_recipe "mercurial"
 mercurial_ext 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py' do
   hgext_dir node.mercurial_env.hgext_dir
   owner node.mercurial_env.owner
+  group node.mercurial_env.group
 end
 mercurial_ext 'https://bitbucket.org/durin42/histedit/raw/tip/hg_histedit.py' do
   hgext_dir node.mercurial_env.hgext_dir
@@ -29,9 +30,11 @@ end
 mercurial_ext 'https://bitbucket.org/birkenfeld/hgbb/raw/tip/hgbb.py' do
   hgext_dir node.mercurial_env.hgext_dir
   owner node.mercurial_env.owner
+  group node.mercurial_env.group
 end
 
 template node.mercurial_env.hgrc.path do
   source 'hgrc.dot.erb'
   user node.mercurial_env.hgrc.owner
+  group node.mercurial_env.hgrc.group
 end

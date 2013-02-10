@@ -13,10 +13,12 @@ Attributes
 ----------
 
 - `node['mercurial_env']['owner']` - owner for extension and hgrc
+- `node['mercurial_env']['group']` - group for extension and hgrc
 - `node['mercurial_env']['hgext_dir']` - extension install dirs: default is .hgext directory under owner's home.
 
 - `node['mercurial_env']['hgrc']['path']` - .hgrc file's absolute path: default is $HOME/.hgrc
 - `node['mercurial_env']['hgrc']['owner']` - .hgrc owner: set if owner is different with extension owner
+- `node['mercurial_env']['hgrc']['group']` - .hgrc group: set if group is different with extension group
 - `node['mercurial_env']['hgrc']['username']` - mercurial commit name
 - `node['mercurial_env']['hgrc']['hostfingerprints']` - hash as {domain => fingerprint}.
 - `node['mercurial_env']['hgrc']['bb]['username']` - bitbucket username
@@ -51,6 +53,7 @@ If you want to customize parameters, specify override_attributes field.
     "mercurial_env": {
       "hgrc": {
         "owner": "foobar"
+        "group": "foobar"
       }
     }
   }
