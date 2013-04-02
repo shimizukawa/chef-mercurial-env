@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-require_recipe "mercurial"
+include_recipe "mercurial"
 
 mercurial_ext 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py' do
   hgext_dir node.mercurial_env.hgext_dir
