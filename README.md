@@ -7,7 +7,7 @@ Requirements
 ------------
 
 #### cookbook
-- `mercurial`
+Nothing. You need install mercurial your self.
 
 Attributes
 ----------
