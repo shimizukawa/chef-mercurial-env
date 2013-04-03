@@ -17,6 +17,13 @@
 # limitations under the License.
 #
 
+directory '/etc/mercurial'
+
+template '/etc/mercurial/hgrc' do
+  source 'global-hgrc.erb'
+  mode '0644'
+end
+
 mercurial_ext 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py' do
   hgext_dir node.mercurial_env.hgext_dir
   owner node.mercurial_env.owner

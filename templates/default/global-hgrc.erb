@@ -1,0 +1,9 @@
+[web]
+<%- case node["platform_family"] -%>
+<%- when "debian" -%>
+cacerts = /etc/ssl/certs/ca-certificates.crt
+<%- when "rhel", "fedora" -%>
+cacerts = /etc/pki/tls/certs/ca-bundle.crt
+<%- when "suse" -%>
+cacerts = /etc/ssl/ca-bundle.pem
+<%- end -%>
