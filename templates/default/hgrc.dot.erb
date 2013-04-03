@@ -7,6 +7,7 @@ username = <%= node[:mercurial_env][:hgrc][:username] %>
 graphlog =
 record =
 mq =
+histedit =
 <%-
   owner = node[:mercurial_env][:owner]
   hgext_dir = node[:mercurial_env][:hgext_dir]
@@ -18,7 +19,6 @@ mq =
     end
   end
 -%>
-histedit = <%= hgext_dir %>/hg_histedit.py
 shelve = <%= hgext_dir %>/hgshelve.py
 bb = <%= hgext_dir %>/hgbb.py
 
