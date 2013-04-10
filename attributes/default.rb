@@ -18,6 +18,7 @@
 default[:mercurial_env][:owner] = 'root'
 default[:mercurial_env][:group] = 'root'
 default[:mercurial_env][:hgext_dir] = nil
+default[:mercurial_env][:action] = 'install'  #accept: install, update
 
 default[:mercurial_env][:hgrc][:path] = nil
 default[:mercurial_env][:hgrc][:owner] = nil

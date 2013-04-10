@@ -15,6 +15,7 @@ Attributes
 - `node['mercurial_env']['owner']` - owner for extension and hgrc
 - `node['mercurial_env']['group']` - group for extension and hgrc
 - `node['mercurial_env']['hgext_dir']` - extension install dirs: default is .hgext directory under owner's home.
+- `node['mercurial_env']['action'] - 'install' or 'update'. default is 'install'
 
 - `node['mercurial_env']['hgrc']['path']` - .hgrc file's absolute path: default is $HOME/.hgrc
 - `node['mercurial_env']['hgrc']['owner']` - .hgrc owner: set if owner is different with extension owner

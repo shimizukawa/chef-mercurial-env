@@ -25,11 +25,13 @@ template '/etc/mercurial/hgrc' do
 end
 
 mercurial_ext 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py' do
+  action node.mercurial_env.action
   hgext_dir node.mercurial_env.hgext_dir
   owner node.mercurial_env.owner
   group node.mercurial_env.group
 end
 mercurial_ext 'https://bitbucket.org/birkenfeld/hgbb/raw/tip/hgbb.py' do
+  action node.mercurial_env.action
   hgext_dir node.mercurial_env.hgext_dir
   owner node.mercurial_env.owner
   group node.mercurial_env.group
