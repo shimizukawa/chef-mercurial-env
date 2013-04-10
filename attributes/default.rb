@@ -15,36 +15,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-default[:mercurial_env][:owner] = 'root'
-default[:mercurial_env][:group] = 'root'
-default[:mercurial_env][:hgext_dir] = nil
-default[:mercurial_env][:action] = 'install'  #accept: install, update
+default['mercurial_env']['owner'] = 'root'
+default['mercurial_env']['group'] = 'root'
+default['mercurial_env']['hgext_dir'] = nil
+default['mercurial_env']['action'] = 'install'  #accept: install, update
 
-default[:mercurial_env][:hgrc][:path] = nil
-default[:mercurial_env][:hgrc][:owner] = nil
-default[:mercurial_env][:hgrc][:group] = nil
-default[:mercurial_env][:hgrc][:username] = nil
-default[:mercurial_env][:hgrc][:hostfingerprints] = {
+default['mercurial_env']['hgrc']['path'] = nil
+default['mercurial_env']['hgrc']['owner'] = nil
+default['mercurial_env']['hgrc']['group'] = nil
+default['mercurial_env']['hgrc']['username'] = nil
+default['mercurial_env']['hgrc']['hostfingerprints'] = {
   'bitbucket.org' => '24:9c:45:8b:9c:aa:ba:55:4e:01:6d:58:ff:e4:28:7d:2a:14:ae:3b',
 }
-default[:mercurial_env][:hgrc][:bb] = {
+default['mercurial_env']['hgrc']['bb'] = {
   'username' => '',
   'password' => '',
   'default_method' => 'https',
 }
 
 # setup dynamic attribute
-unless node[:mercurial_env][:hgrc][:owner]
-  override[:mercurial_env][:hgrc][:owner] = node[:mercurial_env][:owner]
+unless node['mercurial_env']['hgrc']['owner']
+  override['mercurial_env']['hgrc']['owner'] = node['mercurial_env']['owner']
 end
-unless node[:mercurial_env][:hgrc][:group]
-  override[:mercurial_env][:hgrc][:group] = node[:mercurial_env][:group]
+unless node['mercurial_env']['hgrc']['group']
+  override['mercurial_env']['hgrc']['group'] = node['mercurial_env']['group']
 end
-unless node[:mercurial_env][:hgrc][:path]
-  if node[:mercurial_env][:hgrc][:owner] == 'root'
+unless node['mercurial_env']['hgrc']['path']
+  if node['mercurial_env']['hgrc']['owner'] == 'root'
     path = "/root/.hgrc"
   else
-    path = "/home/#{node[:mercurial_env][:hgrc][:owner]}/.hgrc"
+    path = "/home/#{node['mercurial_env']['hgrc']['owner']}/.hgrc"
   end
-  override[:mercurial_env][:hgrc][:path] = path
+  override['mercurial_env']['hgrc']['path'] = path
 end
