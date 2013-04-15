@@ -1,6 +1,6 @@
 [ui]
-<%- if node[:mercurial_env][:hgrc][:username] %>
-username = <%= node[:mercurial_env][:hgrc][:username] %>
+<%- if node.mercurial_env.hgrc.username] %>
+username = <%= node.mercurial_env.hgrc.username %>
 <%- end -%>
 
 [extensions]
@@ -9,8 +9,8 @@ record =
 mq =
 histedit =
 <%-
-  owner = node[:mercurial_env][:owner]
-  hgext_dir = node[:mercurial_env][:hgext_dir]
+  owner = node.mercurial_env.owner
+  hgext_dir = node.mercurial_env.hgext_dir
   unless hgext_dir
     if owner == 'root'
       hgext_dir = "/root/.hgext"
@@ -24,11 +24,11 @@ histedit =
 <%- end -%>
 
 [hostfingerprints]
-<%- node[:mercurial_env][:hgrc][:hostfingerprints].each_pair do |k,v| -%>
+<%- node.mercurial_env.hgrc.hostfingerprints.each_pair do |k,v| -%>
 <%= k %> = <%= v %>
 <%- end -%>
 
 [bb]
-<%- node[:mercurial_env][:hgrc][:bb].each_pair do |k,v| -%>
+<%- node.mercurial_env.hgrc.bb.each_pair do |k,v| -%>
 <%= k %> = <%= v %>
 <%- end -%>
