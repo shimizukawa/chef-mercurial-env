@@ -12,11 +12,12 @@ Nothing. You need install mercurial your self.
 Attributes
 ----------
 
+- `node['mercurial_env']['global_hgrc']` - install hgrc into /etc/mercurial. default is true.
 - `node['mercurial_env']['owner']` - owner for extension and hgrc
 - `node['mercurial_env']['group']` - group for extension and hgrc
-- `node['mercurial_env']['hgext_dir']` - extension install dirs: default is .hgext directory under owner's home.
-- `node['mercurial_env']['action'] - 'install' or 'update'. default is 'install'
+- `node['mercurial_env']['action']` - 'install' or 'update'. default is 'install'
 
+- `node['mercurial_env']['user_hgrc']` - install .hgrc into user home. default is true.
 - `node['mercurial_env']['hgrc']['path']` - .hgrc file's absolute path: default is $HOME/.hgrc
 - `node['mercurial_env']['hgrc']['owner']` - .hgrc owner: set if owner is different with extension owner
 - `node['mercurial_env']['hgrc']['group']` - .hgrc group: set if group is different with extension group
@@ -26,6 +27,8 @@ Attributes
 - `node['mercurial_env']['hgrc']['bb]['password']` - bitbucket password if not use 'ssh' node_method.
 - `node['mercurial_env']['hgrc']['bb]['node_method']` - 'https' or 'ssh'
 
+- `node['mercurial_env']['plugins_dir']` - extension install dirs: default is /etc/mercurial/.hgext directory. if null supplied, create .hgext under owner's home.
+- `node['mercurial_env']['plugins']` - extensions name=>url hash. default: 'bb' and 'shelve'.
 
 Usage
 -----

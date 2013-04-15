@@ -15,11 +15,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+########################
+# global hgrc
+
+default['mercurial_env']['global_hgrc'] = true
 default['mercurial_env']['owner'] = 'root'
 default['mercurial_env']['group'] = 'root'
-default['mercurial_env']['hgext_dir'] = nil
 default['mercurial_env']['action'] = :install  #accept: :install, :update
 
+########################
+# user hgrc
+
+default['mercurial_env']['user_hgrc'] = true
 default['mercurial_env']['hgrc']['path'] = nil
 default['mercurial_env']['hgrc']['owner'] = nil
 default['mercurial_env']['hgrc']['group'] = nil
@@ -33,6 +40,16 @@ default['mercurial_env']['hgrc']['bb'] = {
   'default_method' => 'https',
 }
 
+########################
+# plugins
+
+default['mercurial_env']['plugins_dir'] = '/etc/mercurial/.hgext'
+default['mercurial_env']['plugins'] = {
+  'shelve' => 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py',
+  'bb' => 'https://bitbucket.org/birkenfeld/hgbb/raw/tip/hgbb.py',
+}
+
+###########################
 # setup dynamic attribute
 unless node['mercurial_env']['hgrc']['owner']
   override['mercurial_env']['hgrc']['owner'] = node['mercurial_env']['owner']

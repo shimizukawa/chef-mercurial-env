@@ -19,26 +19,29 @@
 
 directory '/etc/mercurial'
 
-template '/etc/mercurial/hgrc' do
-  source 'global-hgrc.erb'
-  mode '0644'
+if node.mercurial_env.global_hgrc
+  template '/etc/mercurial/hgrc' do
+    source 'global-hgrc.erb'
+    mode '0644'
+  end
 end
 
-mercurial_ext 'https://bitbucket.org/astiob/hgshelve/raw/tip/hgshelve.py' do
-  action node.mercurial_env.action
-  hgext_dir node.mercurial_env.hgext_dir
-  owner node.mercurial_env.owner
-  group node.mercurial_env.group
-end
-mercurial_ext 'https://bitbucket.org/birkenfeld/hgbb/raw/tip/hgbb.py' do
-  action node.mercurial_env.action
-  hgext_dir node.mercurial_env.hgext_dir
-  owner node.mercurial_env.owner
-  group node.mercurial_env.group
+node.mercurial_env.plugins.each do |name, url|
+  directory node.mercurial_env.plugins_dir do
+    mode '0644'
+  end
+  mercurial_ext url do
+    action node.mercurial_env.action
+    hgext_dir node.mercurial_env.plugins_dir
+    owner node.mercurial_env.owner
+    group node.mercurial_env.group
+  end
 end
 
-template node.mercurial_env.hgrc.path do
-  source 'hgrc.dot.erb'
-  user node.mercurial_env.hgrc.owner
-  group node.mercurial_env.hgrc.group
+if node.mercurial_env.user_hgrc
+  template node.mercurial_env.hgrc.path do
+    source 'hgrc.dot.erb'
+    user node.mercurial_env.hgrc.owner
+    group node.mercurial_env.hgrc.group
+  end
 end

@@ -19,8 +19,9 @@ histedit =
     end
   end
 -%>
-shelve = <%= hgext_dir %>/hgshelve.py
-bb = <%= hgext_dir %>/hgbb.py
+<%- node.mercurial_env.plugins.each do |name, url| -%>
+<%= name %> = <%= hgext_dir %>/<%= url.split('/').last %>
+<%- end -%>
 
 [hostfingerprints]
 <%- node[:mercurial_env][:hgrc][:hostfingerprints].each_pair do |k,v| -%>
