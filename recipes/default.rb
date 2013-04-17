@@ -32,7 +32,7 @@ node.mercurial_env.plugins.each do |name, url|
   end
   mercurial_ext url do
     action node.mercurial_env.action
-    hgext_dir node.mercurial_env.plugins_dir
+    plugins_dir node.mercurial_env.plugins_dir
     owner node.mercurial_env.owner
     group node.mercurial_env.group
   end

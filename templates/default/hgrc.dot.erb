@@ -10,17 +10,17 @@ mq =
 histedit =
 <%-
   owner = node.mercurial_env.owner
-  hgext_dir = node.mercurial_env.hgext_dir
-  unless hgext_dir
+  plugins_dir = node.mercurial_env.plugins_dir
+  unless plugins_dir
     if owner == 'root'
-      hgext_dir = "/root/.hgext"
+      plugins_dir = "/root/.hgext"
     else
-      hgext_dir = "/home/#{owner}/.hgext"
+      plugins_dir = "/home/#{owner}/.hgext"
     end
   end
 -%>
 <%- node.mercurial_env.plugins.each do |name, url| -%>
-<%= name %> = <%= hgext_dir %>/<%= url.split('/').last %>
+<%= name %> = <%= plugins_dir %>/<%= url.split('/').last %>
 <%- end -%>
 
 [hostfingerprints]
