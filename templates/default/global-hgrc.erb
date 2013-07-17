@@ -3,6 +3,7 @@
 # Local modifications will be overwritten.
 #
 <%- @sections.each do |section, kv| -%>
+
 [<%= section %>]
 <%- kv.each do |key, value| -%>
 <%= key %> = <%= value %>
