@@ -16,6 +16,14 @@ Attributes
 - `node['mercurial_env']['owner']` - owner for extension and hgrc
 - `node['mercurial_env']['group']` - group for extension and hgrc
 - `node['mercurial_env']['action']` - 'install' or 'update'. default is 'install'
+- `node['mercurial_env']['global_hgrc_sections']` - global hgrc section and keys-values.
+  default is:
+
+    {"web" => {"cacert" => "/path/to/certfile"}}
+
+  for example:
+
+    {"section1" => {"key1" => "value1", "key2" => "value2", ...}, ...}
 
 - `node['mercurial_env']['user_hgrc']` - install .hgrc into user home. default is true.
 - `node['mercurial_env']['hgrc']['path']` - .hgrc file's absolute path: default is $HOME/.hgrc

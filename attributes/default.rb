@@ -23,6 +23,20 @@ default['mercurial_env']['owner'] = 'root'
 default['mercurial_env']['group'] = 'root'
 default['mercurial_env']['action'] = :install  #accept: :install, :update
 
+# default['mercurial_env']['global_hgrc_sections'] = {}
+# {'section1' => {'key1' => 'value1', 'key2' => 'value2', ...}, ...}
+case node["platform_family"]
+when "debian"
+  default['mercurial_env']['global_hgrc_sections']['web']['cacerts'] = '/etc/ssl/certs/ca-certificates.crt'
+when "rhel", "fedora"
+  default['mercurial_env']['global_hgrc_sections']['web']['cacerts'] = '/etc/pki/tls/certs/ca-bundle.crt'
+when "suse"
+  default['mercurial_env']['global_hgrc_sections']['web']['cacerts'] = '/etc/ssl/ca-bundle.pem'
+else
+  default['mercurial_env']['global_hgrc_sections']['web'] = {}
+end
+
+
 ########################
 # user hgrc
 

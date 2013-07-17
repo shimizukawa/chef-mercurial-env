@@ -23,6 +23,7 @@ if node.mercurial_env.global_hgrc
   template '/etc/mercurial/hgrc' do
     source 'global-hgrc.erb'
     mode '0644'
+    variables ({'sections' => node.mercurial_env.global_hgrc_sections})
   end
 end
 
