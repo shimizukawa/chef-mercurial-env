@@ -29,7 +29,7 @@ end
 
 node.mercurial_env.plugins.each do |name, url|
   directory node.mercurial_env.plugins_dir do
-    mode '0644'
+    mode '0755'
   end
   mercurial_ext url do
     action node.mercurial_env.action
